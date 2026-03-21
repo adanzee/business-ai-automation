@@ -26,6 +26,7 @@
         "jiter",
         "joblib",
         "Kidhome",
+        "lastrowid",
         "llms",
         "mpmath",
         "multidict",
@@ -38,6 +39,7 @@
         "pdfplumber",
         "platformdirs",
         "propcache",
+        "pycache",
         "pycparser",
         "pydantic",
         "pypdf",
@@ -54,6 +56,7 @@
         "tqdm",
         "tzdata",
         "urllib",
+        "venv",
         "yarl"
     ]
 }

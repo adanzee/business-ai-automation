@@ -70,7 +70,18 @@ class ChunkStorage:
 
         self.conn.commit()
         return self.cursor.lastrowid
-        
+    
+
+    def document_exists(self, file_path:str) -> bool:
+        self.cursor.execute(
+            """
+            
+            SELECT id FROM documents WHERE file_path = ? 
+            """,
+            (file_path,)
+        )
+        return self.cursor.fetchone() is not None 
+
     def close(self):
         self.conn.close()
 

@@ -1,7 +1,7 @@
 from nltk import sent_tokenize
 
 def chunk_document(parsed_pages: list, chunk_size: int = 8) -> list:
-    chunks = []
+    chunk_list = []
     global_index = 0 
     for page in parsed_pages:
         sentences  = sent_tokenize(page['chunk_text'])
@@ -15,6 +15,6 @@ def chunk_document(parsed_pages: list, chunk_size: int = 8) -> list:
                 "metadata": page['metadata']
             }
 
-            chunks.append(chunk_data)
+            chunk_list.append(chunk_data)
             global_index += 1
-    return chunks
+    return chunk_list

@@ -4,12 +4,49 @@ from pathlib import Path
 #sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 import argparse
-from src.storage import ChunkStorage
 from rich.console import Console
+from sqlalchemy import exists
+
+from backend.src import storage
+from src.storage import ChunkStorage
+from src.parser import extract_text_from_pdf
+from src.chunker import chunk_document
+from src.keyword_extractor import extract_keywords
 
 
 
 console = Console()
+
+def ingest_files(file_path: Path, dept:str, ):
+   
+   storage = ChunkStorage()
+   
+   if storage.document_exists(str(file_path)):
+    return (f"{file_path} already ingested. Skipping ingestion.")
+    storage.close()
+   else:
+
+    document_id = storage.insert_document(dept, str(file_path), file_path.name)
+    print(f"Ingested {file_path} for department {dept}")
+    parsed_pages = extract_text_from_pdf(file_path)
+    chunk = chunk_document(parsed_pages)
+
+    for chunks in chunk:
+        keywords = extract_keywords(chunks['chunk_text'])
+        storage.insert_chunk(
+            document_id= document_id,
+            chunk_text=chunks['chunk_text'],
+            chunk_index=chunks['chunk_index'],
+            page_num=chunks['page_num'],
+            chunk_embedding=None,  # Placeholder for embedding, to be generated later
+            keywords=keywords,
+            metadata=str(chunks['metadata'])
+        )
+
+
+
+    storage.close() 
+
 
 def main():
     parser = argparse.ArgumentParser(description="[bold:pink]Main Hub for Backend Services[bold:pink]")

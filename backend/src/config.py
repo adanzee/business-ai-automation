@@ -8,8 +8,8 @@ load_dotenv() #important
 class Settings(BaseSettings):
     MODEL_NAME: str
     OLLAMA_HOST: str
-    DB_PATH: str= str(Path(__file__).parent.parent / "data" / "chunks.db")
-    DATA_ROOT: Path
+    DB_PATH: str= str(Path(__file__).parent.parent / "data" / "hub.db")
+    DATA_ROOT: Path = Path(__file__).parent.parent / "data"
 
     class Config:
         env_file = ".env"

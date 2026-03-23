@@ -2,7 +2,7 @@ import pdfplumber
 from pathlib import Path
 
 
-def extract_text_from_pdf( file_path: str) -> list:
+def extract_text_from_pdf( file_path: Path) -> list:
     chunks = []
     with pdfplumber.open(file_path) as pdf:
         for i, page in enumerate(pdf.pages):
@@ -13,7 +13,6 @@ def extract_text_from_pdf( file_path: str) -> list:
 
                 data_dict = {
                     "chunk_text":text,
-                    "chunk_index":i,
                     "page_num": i+1,
                     "metadata": {
                         "source_file": Path(file_path).name,

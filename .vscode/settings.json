@@ -39,6 +39,7 @@
         "pdfplumber",
         "platformdirs",
         "propcache",
+        "punkt",
         "pycache",
         "pycparser",
         "pydantic",

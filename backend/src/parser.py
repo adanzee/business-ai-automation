@@ -16,7 +16,7 @@ def extract_text_from_pdf( file_path: Path) -> list:
                     "page_num": i+1,
                     "metadata": {
                         "source_file": Path(file_path).name,
-                        "source_path": file_path, 
+                        "source_path": str(file_path),
                         "dept": Path(file_path).parent.name
                     }
                 }

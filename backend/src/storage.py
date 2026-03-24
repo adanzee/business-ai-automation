@@ -82,6 +82,16 @@ class ChunkStorage:
         )
         return self.cursor.fetchone() is not None 
 
+
+
+    def get_all_chunks(self) -> list:
+        self.cursor.execute(
+            """
+            SELECT * FROM chunks"""
+        ) 
+        return self.cursor.fetchall()
+    
+
     def close(self):
         self.conn.close()
 

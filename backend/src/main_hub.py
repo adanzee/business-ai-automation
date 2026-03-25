@@ -25,7 +25,7 @@ def ingest_file(file_path: Path, dept:str):
     storage.close()
 
 if __name__ == "__main__":
-    ingest_file(Path("F:\AI-Automation\data\marketing\Classic-Case-Study-Share-a-Coke-Campaign.pdf"), "Marketing")
+    ingest_file(Path(r"F:\AI-Automation\data\marketing\Classic-Case-Study-Share-a-Coke-Campaign.pdf"), "Marketing")
     # Query Loop
     storage = ChunkStorage()
     while True:

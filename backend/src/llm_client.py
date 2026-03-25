@@ -3,7 +3,7 @@
 import requests
 from pathlib import Path
 import json
-
+from src.config import settings
 
 
 
@@ -21,28 +21,28 @@ def build_context(chunks: list[dict]) -> str:
 def generate_response(query:str, chunks: list[dict]) -> str:
 
     context = build_context(chunks)
-    prompt = f"""You are an AI analyst. Answer only from the context below.
-    Always end your answer with the citation in this exact format:
-    Source: [filename], Page: [page number]
-
-    If the answer is not in the context say 'Insufficient data'.
-    Re-quote any statistics or citations exactly as they appear.
+    prompt = f"""You are an AI analyst for a company. 
+    Include source citation at the end.
+    Reproduce statistics and quotes exactly as they appear.
+    Only say 'Insufficient data' if context has NO relevant information at all.
+    Never mix an answer with 'Insufficient data' — choose one or the other.
 
     Context:
     {context}
 
     Question: {query}
-    Answer:"""
+
+    Answer (must be based on context above, include citation):"""
 
     response = requests.post(
         url = "http://localhost:11434/api/generate",
         json = {
-            "model" : "phi4-mini",
+            "model" : settings.MODEL_NAME,
             "prompt" : prompt,
             "stream" : False,
             "options": {
                 "temperature": 0.1,
-                "num_predict": 250,
+                "num_predict": 400,
             }
         }
     )

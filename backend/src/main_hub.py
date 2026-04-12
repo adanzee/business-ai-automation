@@ -1,11 +1,11 @@
 import json
 from pathlib import Path
-from src.storage import ChunkStorage
-from src.parser import extract_text_from_pdf
-from src.chunker import chunk_document
-from src.keyword_extractor import extract_keywords
-from src.retriever import retrieve_chunks
-from src.llm_client import generate_response
+from backend.src.integrations.storage import ChunkStorage
+from backend.src.agents.parser import extract_text_from_pdf
+from backend.src.storage.chunker import chunk_document
+from backend.src.utils.keyword_extractor import extract_keywords
+from backend.src.storage.retriever import retrieve_chunks
+from backend.src.agents.llm_client import generate_response
 
 
 def ingest_file(file_path: Path, dept:str):

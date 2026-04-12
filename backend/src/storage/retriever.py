@@ -1,5 +1,5 @@
-from src.storage import ChunkStorage
-from src.keyword_extractor import extract_keywords
+from backend.src.integrations.storage import ChunkStorage
+from backend.src.utils.keyword_extractor import extract_keywords
 
 def retrieve_chunks(query:str, storage: ChunkStorage, top_chunk: int = 5) -> list:
     # Extract keywords from the user query

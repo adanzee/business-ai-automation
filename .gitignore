@@ -48,7 +48,7 @@ env/
 *.h5
 
 # Data files
-data/
+data_files/
 *.csv
 *.json
 *.pdf

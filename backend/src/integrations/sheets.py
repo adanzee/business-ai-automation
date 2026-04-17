@@ -2,6 +2,9 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import os 
 from dotenv import load_dotenv
+import logging
+
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
@@ -23,7 +26,7 @@ class GoogleSheetsClient:
             sheet = client.open_by_key(self.spreadsheet_id).sheet1
             return sheet
         except Exception as e:
-            print(f"Error connecting to Google Sheets: {e}")
+            logger.exception(f"Error connecting to Google Sheets: {e}")
             return None
         
 if __name__ == "__main__":

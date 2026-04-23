@@ -1,6 +1,6 @@
 An advanced Python-based framework designed to automate complex business operations through the use of autonomous AI agents and multimodal Retrieval-Augmented Generation (RAG).
 
-## 👁️ Vision
+##  Vision
 The **business-ai-automation** project serves as a bridge between raw enterprise data and actionable intelligence. By integrating advanced reasoning models, the system transforms unstructured information—ranging from textual reports to financial tables and graphical data—into automated workflows and strategic insights.
 
 ## ✨ Key Features
@@ -43,5 +43,5 @@ The system recently underwent a significant **AI architecture refactor** to bett
 ## 🛠️ Development & Roadmap
 The current development focus is on enhancing **multimodal integration**, specifically the ability for agents to autonomously navigate complex financial tables and extract data from technical figures. 
 
-Contributions should follow the modular structure established in the `backend/` directory and must include corresponding tests in the `test/` folder to maintain system reliability.
+
 
